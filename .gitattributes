@@ -1,0 +1,10 @@
+Assets/Levels/LevelAllQuests.prefab filter=lfs diff=lfs merge=lfs -text
+Assets/Scenes/Arsa/Arsa'sScene.unity filter=lfs diff=lfs merge=lfs -text
+Assets/Levels/OtherLevels/Mars_scene_test.unity filter=lfs diff=lfs merge=lfs -text
+Assets/Scenes/Mars_scene_test.unity filter=lfs diff=lfs merge=lfs -text
+Assets/Levels/Environment.prefab filter=lfs diff=lfs merge=lfs -text
+*.so filter=lfs diff=lfs merge=lfs -text
+*.bundle filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-12_3_0.bundle filter=lfs diff=lfs merge=lfs -text
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-12_3_0.so filter=lfs diff=lfs merge=lfs -text
