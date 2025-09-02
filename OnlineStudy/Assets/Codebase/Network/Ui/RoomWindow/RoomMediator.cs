@@ -17,12 +17,15 @@ public class RoomMediator : MonoBehaviour
         _roomPlayersInfoService = roomPlayersInfoService;
     }
 
+    private void OnEnable()
+    {
+        _playersDisplayPanel.DisplayPlayersData(_roomPlayersInfoService.RoomPlayersInfo);
+    }
+
     private void Start()
     {
         _quitRoomButton.onClick.AddListener(QuitRoom);
         _roomPlayersInfoService.PlayersInfoUpdated += DisplayPlayersInfo;
-
-        _playersDisplayPanel.DisplayPlayersData(_roomPlayersInfoService.RoomPlayersInfo);
     }
 
     private void OnDestroy()

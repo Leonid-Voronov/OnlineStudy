@@ -16,15 +16,18 @@ public class NetworkUiMediator : MonoBehaviour
         _networkConnector = networkConnector;
         _roomConnector = roomConnector;
     }
-    
+
+    private void OnEnable()
+    {
+        ShowJoinRoomWindow();
+    }
+
     private void Start()
     {
         _roomConnector.RoomJoined += HideJoinRoomWindow;
         _roomConnector.RoomJoined += ShowRoomWindow;
         _roomConnector.RoomLeft += HideRoomWindow;
         _roomConnector.RoomLeft += ShowJoinRoomWindow;
-        
-        ShowJoinRoomWindow();
     }
 
     private void OnDestroy()

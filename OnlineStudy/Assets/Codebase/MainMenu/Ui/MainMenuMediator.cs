@@ -9,6 +9,7 @@ public class MainMenuMediator : MonoBehaviour
     [SerializeField] private Button _accountButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private GameObject _emptyProfilePopUp;
+    [SerializeField] private GameObject _accountPanel;
 
     private INetworkConnector _networkConnector;
     private IApplicationQuitter _applicationQuitter;
@@ -28,6 +29,9 @@ public class MainMenuMediator : MonoBehaviour
         
         //Logic=>Ui
         _networkConnector.OnEmptyProfileConnectionCancel += ShowEmptyProfilePopUp;
+        
+        //Ui=>Ui
+        _accountButton.onClick.AddListener(ShowAccountPanel);
     }
 
     private void OnDestroy()
@@ -38,6 +42,9 @@ public class MainMenuMediator : MonoBehaviour
         
         //Logic=>Ui
         _networkConnector.OnEmptyProfileConnectionCancel -= ShowEmptyProfilePopUp;
+        
+        //Ui=>Ui
+        _accountButton.onClick.RemoveListener(ShowAccountPanel);
     }
 
     private void ConnectToServer() => _networkConnector.ConnectToNetwork();
@@ -45,4 +52,6 @@ public class MainMenuMediator : MonoBehaviour
     private void Quit() => _applicationQuitter.QuitApplication();
     
     private void ShowEmptyProfilePopUp(object sender, EventArgs eventArgs) => _emptyProfilePopUp.SetActive(true);
+    
+    private void ShowAccountPanel() => _accountPanel.SetActive(true);
 }
