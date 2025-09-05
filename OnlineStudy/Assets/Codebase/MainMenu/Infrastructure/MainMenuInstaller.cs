@@ -5,11 +5,23 @@ public class MainMenuInstaller : MonoInstaller
 {
     [Header("Scene references")]
     [SerializeField] private UiParentLink _uiParentLink;
+    [SerializeField] private MainMenuCameraTag _cameraTag;
     
     public override void InstallBindings()
     {
         InstallFactories();
         InstallUi();
+        InstallCamera();
+    }
+
+    private void InstallCamera()
+    {
+        Container.Bind<MainMenuCameraTag>()
+            .FromInstance(_cameraTag)
+            .AsSingle();
+
+        Container.BindInterfacesTo<MainMenuCameraDisabler>()
+            .AsSingle();
     }
 
     private void InstallFactories()

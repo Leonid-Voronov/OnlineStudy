@@ -6,6 +6,8 @@ using Zenject;
 
 public class SceneLoadService : ISceneLoadService
 {
+    public event EventHandler AdditiveSceneLoading;
+    
     private const string TestEnvironmentSceneName = "TestEnvironment";
     
     private readonly ILoadingCurtainService _loadingCurtainService;
@@ -15,12 +17,12 @@ public class SceneLoadService : ISceneLoadService
     {
         _loadingCurtainService = loadingCurtainService;
     }
-    
-    
+
     public void LoadTestEnvironment()
     {
         _loadingCurtainService.ShowLoadingCurtain(true);
         AsyncOperation loadOperation = LoadTestEnvironmentScene();
+        AdditiveSceneLoading?.Invoke(this, EventArgs.Empty);
         loadOperation.completed += OnLoadComplete();
     }
     

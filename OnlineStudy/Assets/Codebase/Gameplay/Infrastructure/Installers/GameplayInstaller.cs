@@ -10,6 +10,7 @@ public class GameplayInstaller : MonoInstaller
     {
         InstallFactories();
         InstallSceneReferences();
+        InstallInputBindings();
     }
 
     private void InstallFactories()
@@ -23,6 +24,16 @@ public class GameplayInstaller : MonoInstaller
     {
         Container.Bind<CharacterSpawnPoint>()
             .FromInstance(_characterSpawnPoint)
+            .AsSingle();
+    }
+
+    private void InstallInputBindings()
+    {
+        Container.Bind<PlayerInput>()
+            .To<PlayerInput>()
+            .AsSingle();
+        
+        Container.BindInterfacesTo<GameplayInputService>()
             .AsSingle();
     }
 }
