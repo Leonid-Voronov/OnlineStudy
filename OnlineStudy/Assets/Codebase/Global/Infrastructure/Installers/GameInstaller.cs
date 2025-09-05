@@ -19,6 +19,10 @@ public class GameInstaller : MonoInstaller
 
     private void InstallLifeCycleBindings()
     {
+        Container.Bind<ISceneLoadService>()
+            .To<SceneLoadService>()
+            .AsSingle();
+        
         Container.Bind<IApplicationQuitter>()
             .To<ApplicationQuitter>()
             .AsSingle();

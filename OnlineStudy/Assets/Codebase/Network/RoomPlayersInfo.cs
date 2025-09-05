@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine;
 
 public class RoomPlayersInfo
 {

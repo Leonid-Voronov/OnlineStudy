@@ -23,7 +23,6 @@ public class TextLibrarySo : ScriptableObject
 
     private void OnEnable()
     {
-        Debug.Log("TextLibrary created");
         _textDictionary?.Clear();
         _textDictionary = new();
         foreach (var textEntry in _textEntries)

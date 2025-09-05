@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class EntryPoint : MonoBehaviour
+public class MainMenuEntryPoint : MonoBehaviour
 {
     private IMainMenuUiInitializer _mainMenuUiInitializer;
     private INetworkUiInitializer _networkUiInitializer;

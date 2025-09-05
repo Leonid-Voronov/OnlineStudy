@@ -1,40 +1,28 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class GameplayInstaller : MonoInstaller
 {
-    [Header("Scene references")]
-    [SerializeField] private UiParentLink _uiParentLink;
+    [SerializeField] private CharacterSpawnPoint _characterSpawnPoint;
     
     public override void InstallBindings()
     {
         InstallFactories();
-        InstallUi();
+        InstallSceneReferences();
     }
 
     private void InstallFactories()
     {
-        Container.Bind<IGameplayUiFactory>()
-            .To<GameplayUiFactory>()
+        Container.Bind<IGameplayFactory>()
+            .To<GameplayFactory>()
             .AsSingle();
     }
 
-    private void InstallUi()
+    private void InstallSceneReferences()
     {
-        Container.Bind<IGameplayUiInitializer>()
-            .To<GameplayUiInitializer>()
-            .AsSingle();
-        
-        Container.Bind<UiParentLink>()
-            .FromInstance(_uiParentLink)
-            .AsSingle();
-        
-        Container.Bind<INetworkUiInitializer>()
-            .To<NetworkUiInitializer>()
-            .AsSingle();
-        
-        Container.Bind<IMainMenuUiInitializer>()
-            .To<MainMenuUiInitializer>()
+        Container.Bind<CharacterSpawnPoint>()
+            .FromInstance(_characterSpawnPoint)
             .AsSingle();
     }
 }
